@@ -18,6 +18,7 @@ func UserController(r chi.Router) {
 			writer.WriteHeader(500)
 		} else {
 			userData := GetUserData(id)
+			writer.Header().Add("Content-Type", "application/json")
 			json.NewEncoder(writer).Encode(&userData)
 		}
 	})
